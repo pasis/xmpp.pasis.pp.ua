@@ -64,7 +64,7 @@ void conn_handler(xmpp_conn_t *conn,
 	(void)stream_error;
 
 	if (status == XMPP_CONN_CONNECT) {
-		/* Регистрируем обраточик сообщений. */
+		/* Регистрируем обработчик сообщений. */
 		xmpp_handler_add(conn, message_handler, NULL,
 				 "message", NULL, NULL);
 

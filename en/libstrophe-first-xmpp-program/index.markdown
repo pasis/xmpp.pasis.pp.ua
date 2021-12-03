@@ -2,9 +2,9 @@
 
 # libstrophe: Your first XMPP program
 
-When learning a programming language, it is common to write a "Hello world" as the first program. There is similar tradition for XMPP: an echo bot. Let's write such a program in C language with libstrophe library. And figure libstrophe basics out on the way.
+When learning a programming language, it is common to write a "Hello world" as the first program. There is similar tradition for XMPP: an echo bot. Let's write such a program in the C programming language with the libstrophe library. And figure out the basics of libstrophe on the way.
 
-Building process is presented to Unix like systems or Cygwin. However, the code works under Windows with Visual Studio as well.
+The building process is presented for Unix like systems or Cygwin. However, the code works under Windows with Visual Studio as well.
 
 libstrophe source code is distributed with simple examples, including basic.c and bot.c:
 
@@ -14,7 +14,7 @@ libstrophe source code is distributed with simple examples, including basic.c an
 | [bot.c][2]   | Example of an echo bot                   |
 
 
-As can you see, we have already got a complete echo bot. And here we will repeat the way with small steps.
+As can you see, we have already got a complete echo bot. And here we will do the same (but) in small steps.
 
 [1]: https://github.com/strophe/libstrophe/blob/master/examples/basic.c
 [2]: https://github.com/strophe/libstrophe/blob/master/examples/bot.c
@@ -24,15 +24,17 @@ As can you see, we have already got a complete echo bot. And here we will repeat
 Install libstrophe library:
  * Refer to the package manager of your system
  * For binary based Linux distributions, also install development package (libstrophe-dev or libstrophe-devel)
- * Alternatively, libstrophe can be built and installed from sources ([https://github.com/strophe/libstrophe])
+ * Alternatively, libstrophe can be built and installed from sources ([https://github.com/strophe/libstrophe][3])
 
-For simplicity, we will use `Makefile` to build our bot:
+For simplicity, we will use a `Makefile` to build our bot:
 ```make
 all:
 	gcc `pkg-config --cflags --libs libstrophe` -o bot bot.c
 ```
 
 As you probably noticed, we will save our code to file `bot.c`. To build the program it is enough to run `make`.
+
+[3]: https://github.com/strophe/libstrophe
 
 ## Connection with an XMPP server
 
@@ -52,7 +54,7 @@ int main()
 }
 ```
 
-The first step to work with XMPP is to establish XMPP connection with a server:
+The first step to work with XMPP is to establish an XMPP connection with a server:
 
 ```c
 void bot_run()
@@ -96,9 +98,9 @@ Connection object has an internal state which can be `DISCONNECTED`, `CONNECTING
 
 Don't forget to replace strings "user@xmpp.org" and "password" with your configuration.
 
-As it is mentioned above, libstrophe handles majority of its functionality in the [event loop][3]. Therefore, it is important to run the event loop in time and not to block application for long. There are two ways to execute the event loop: `xmpp_run()` and `xmpp_run_once()`. The first function is a blocking endless loop which is interrupted on `xmpp_stop()`. The second function runs a single iteration of the event loop and returns. The second way is useful if the application has its own event loop or uses an external one, for example, GTK.
+As it is mentioned above, libstrophe handles majority of its functionality in the [event loop][4]. Therefore, it is important to run the event loop in time and not to block application for long. There are two ways to execute the event loop: `xmpp_run()` and `xmpp_run_once()`. The first function is a blocking endless loop which is interrupted on `xmpp_stop()`. The second function runs a single iteration of the event loop and returns. The second way is useful if the application has its own event loop or uses an external one, for example, GTK.
 
-[3]: https://en.wikipedia.org/wiki/Event_loop
+[4]: https://en.wikipedia.org/wiki/Event_loop
 
 ## Event loop
 
@@ -271,7 +273,7 @@ As you can see, wrappers allow to write more compact code, however, they're not 
 
 ## Final bot source code
 
-In conclusion, let's assemble all the parts together. The code is also available by the link: [bot.c][4].
+In conclusion, let's assemble all the parts together. The code is also available by the link: [bot.c][5].
 
 ```c
 #include <strophe.h>
@@ -379,7 +381,7 @@ int main()
 }
 ```
 
-[4]: /en/libstrophe-first-xmpp-program/bot.c
+[5]: /en/libstrophe-first-xmpp-program/bot.c
 
 ## Troubleshooting
 
